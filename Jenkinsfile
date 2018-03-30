@@ -34,8 +34,9 @@ pipeline {
         stage('deploy') {
             steps {
                 sh 'docker build --target=deploy -t deploy .'
-                sh 'docker stop deploy || true && docker rm deploy || true'
+                sh 'docker stop deploy || true && docker rm -f deploy || true'
                 sh 'docker run -d -p 80:80 deploy'
+                sh 'docker system prune -f'
             }    
         }
     }
