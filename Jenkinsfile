@@ -12,13 +12,13 @@ pipeline {
             steps {
                 sh 'docker build --target=test -t test .'
                 sh 'docker run --rm test \
-                        ng run test:CI'
+                        npm run test:CI'
             }
         }
         stage('e2e tests') {
             steps {
                 sh 'docker run --rm test \
-                         ng run e2e:CI'
+                        npm run e2e:CI'
             }
         }
         stage('deploy') {
