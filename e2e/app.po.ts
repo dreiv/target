@@ -11,7 +11,12 @@ export class AppPage {
     return element(by.css(this.header()));
   }
 
-  getParagraphText() {
+  getHeaderText() {
     return element(by.css(this.header('h1'))).getText();
   }
+
+  getApp(): WebElement {
+    return element(by.css('app-root'));
+  }
+
 }

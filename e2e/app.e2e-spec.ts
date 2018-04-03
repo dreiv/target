@@ -12,7 +12,12 @@ describe('target App', () => {
     expect(page.getHeader()).toBeTruthy();
   });
 
-  it('should display welcome message', () => {
-    expect(page.getParagraphText()).toEqual('Angular Simple Reddit');
+  it('should have a propper header message', () => {
+    expect(page.getHeaderText()).toEqual('Angular Simple Reddit');
   });
+
+  it('should have an app entry point', () => {
+    expect(page.getApp()).toBeTruthy();
+  })
+  
 });
