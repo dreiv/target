@@ -10,24 +10,15 @@ pipeline {
         }
         stage ('unit tests') {
             steps {
-                sh 'docker build --target=firefox -t firefox .'
-                sh 'docker run --rm firefox \
-                        npm test:CI'
+                sh 'docker build --target=test -t test .'
+                sh 'docker run --rm test \
+                        ng test --browser=ChromeHeadlessCI --single-run --sourcemaps false --log-level WARN'
             }
         }
         stage('e2e tests') {
             steps {
-                parallel(
-                    firefox: {
-                        sh 'docker run --rm firefox \
+                sh 'docker run --rm test \
                          ng e2e --sourcemaps false --aot '
-                    },
-                    chrome: {
-                        sh 'docker build --target=chrome -t chrome .'
-                        sh 'docker run --rm chrome \
-                         ng e2e --sourcemaps false --aot '
-                    }
-                )
             }
         }
         stage('deploy') {

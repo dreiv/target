@@ -17,25 +17,16 @@ FROM base AS dependencies
 COPY . $HOME
 
 #
-# -- Chrome --
-FROM base AS chrome
+# -- Test --
+FROM base AS test
 ENV CHROME_BIN /usr/bin/chromium-browser
 # Install Chromium
 RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \
-  && apk --no-cache --quiet add \
-  && rm -rf /tmp/* /var/cache/apk/* \
+  && apk add --no-cache --quiet \
   # chromium dependencies
   nss@edge \
   chromium-chromedriver@edge \
   chromium@edge
-COPY . $HOME
-
-#
-# -- Firefox --
-FROM base AS firefox
-# Install Firefox
-RUN apk --update --no-cache --quiet add firefox \
-&& rm -rf /tmp/* /var/cache/apk/*
 COPY . $HOME
 
 #
