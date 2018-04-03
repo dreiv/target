@@ -7,13 +7,9 @@ import { NumberSymbol } from '@angular/common';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
-
-  constructor() {}
-
-  ngOnInit() {}
 
   upvote(): boolean {
     this.article.upvote();

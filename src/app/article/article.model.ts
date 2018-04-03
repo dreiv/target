@@ -14,10 +14,10 @@ export class Article {
     return this._votes;
   }
 
-  constructor($title: string, $link: string, $votes: number = 0) {
-    this._title = $title;
-    this._link = $link;
-    this._votes = $votes;
+  constructor(title: string, link: string, votes: number = 0) {
+    this._title = title;
+    this._link = link;
+    this._votes = votes;
   }
 
   upvote() {
@@ -28,8 +28,6 @@ export class Article {
     this._votes--;
   }
 
-  // domain() is a utility function that extracts
-  // the domain from a URL, which we'll explain shortly
   domain(): string {
     try {
       // e.g. http://foo.com/path/to/bar

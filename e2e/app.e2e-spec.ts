@@ -18,6 +18,6 @@ describe('target App', () => {
 
   it('should have an app entry point', () => {
     expect(page.getApp()).toBeTruthy();
-  })
-  
+  });
+
 });
