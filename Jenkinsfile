@@ -12,13 +12,13 @@ pipeline {
             steps {
                 sh 'docker build --target=test -t test .'
                 sh 'docker run --rm test \
-                        ng test --browser=ChromeHeadlessCI --single-run --sourcemaps false --log-level WARN'
+                        ng run test:CI'
             }
         }
         stage('e2e tests') {
             steps {
                 sh 'docker run --rm test \
-                         ng e2e --sourcemaps false --aot '
+                         ng run e2e:CI'
             }
         }
         stage('deploy') {

@@ -28,20 +28,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],
     singleRun: false,
     customLaunchers: {
       ChromeHeadlessCI: {
         base: "ChromeHeadless",
         flags: ["--no-sandbox"]
-      },
-      browsers: ['FirefoxHeadless'],
-      customLaunchers: {
-        FirefoxHeadless: {
-          base: 'Firefox',
-          flags: [ '-headless' ],
-        },
-      },
+      }
     },
     browserNoActivityTimeout: 60000
   });

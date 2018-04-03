@@ -9,12 +9,8 @@ exports.config = {
     './e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    browserName: "chrome",
-    chromeOptions: {
-      args: ["no-sandbox", "headless", "disable-gpu"]
-    }
+    browserName: "chrome"
   },
-  chromeDriver: "/usr/bin/chromedriver",
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',

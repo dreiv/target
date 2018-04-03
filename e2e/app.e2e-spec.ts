@@ -5,10 +5,14 @@ describe('target App', () => {
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
+  });
+
+  it('should have a header', () => {
+    expect(page.getHeader()).toBeTruthy();
   });
 
   it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('Angular Simple Reddit');
   });
 });

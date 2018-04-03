@@ -7,9 +7,10 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
-    "test:CI": "ng test ng test --browser=FirefoxHeadless --single-run --sourcemaps false --log-level WARN --aot",
+    "test:CI": "ng test ng test --browser=ChromeHeadlessCI --single-run --sourcemaps false --log-level WARN",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "e2e:CI": "ng e2e --config='./protractor.conf.ci.js' --sourcemaps false --aot"
   },
   "private": true,
   "dependencies": {
