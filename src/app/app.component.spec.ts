@@ -198,7 +198,7 @@ describe('AppComponent', () => {
       click(App.formSubmitButton);
       expect(app.addArticle).toHaveBeenCalledWith(App.formTitle.nativeElement, App.formLink.nativeElement);
     });
-  });
+  }));
 
   it('should have a separator between the form and the posts', () => {
       expect(App.horizontalRuleAfterForm).toBeTruthy();
