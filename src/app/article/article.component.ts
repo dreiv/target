@@ -20,4 +20,9 @@ export class ArticleComponent {
     this.article.downvote();
     return false;
   }
+
+  delete(): boolean {
+    this.article = null;
+    return false;
+  }
 }
