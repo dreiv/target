@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh 'docker build --target=firefox -t firefox .'
                 sh 'docker run --rm firefox \
-                        ng test --browser=ChromeHeadlessCI --single-run --sourcemaps false --log-level WARN'
+                        npm test:CI'
             }
         }
         stage('e2e tests') {

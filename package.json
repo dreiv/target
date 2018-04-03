@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
-    "test:ff": "ng test --browser=FirefoxHeadless --single-run=true",
+    "test:CI": "ng test ng test --browser=FirefoxHeadless --single-run --sourcemaps false --log-level WARN --aot",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
