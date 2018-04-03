@@ -20,7 +20,7 @@ export class Article {
     this._title = title;
     this._link = link;
     this._votes = votes;
-    
+
     this.domain = this._domain();
   }
 
