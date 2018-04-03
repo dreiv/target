@@ -14,10 +14,14 @@ export class Article {
     return this._votes;
   }
 
+  public domain: string;
+
   constructor(title: string, link: string, votes: number = 0) {
     this._title = title;
     this._link = link;
     this._votes = votes;
+    
+    this.domain = this._domain();
   }
 
   upvote() {
@@ -28,7 +32,7 @@ export class Article {
     this._votes--;
   }
 
-  domain(): string {
+  private _domain(): string {
     try {
       // e.g. http://foo.com/path/to/bar
       const domainAndPath: string = this.link.split('//')[1];

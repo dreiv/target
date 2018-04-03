@@ -2,9 +2,10 @@ import { async, ComponentFixture, TestBed, TestModuleMetadata } from '@angular/c
 
 import { ArticleComponent } from './article.component';
 import { setUpTestBed } from '../../test.common.spec';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { click } from '../utils';
 import { Article } from './article.model';
+import { By } from '@angular/platform-browser';
 
 describe('ArticleComponent', () => {
   let component: ArticleComponent;
@@ -12,6 +13,9 @@ describe('ArticleComponent', () => {
   const mockLink = 'https://mockURL/';
 
   class ArticleCmp {
+    static get form(): DebugElement {
+      return fixture.debugElement.query(By.css('form'));
+    }
   }
 
   setUpTestBed(<TestModuleMetadata>{
@@ -54,6 +58,11 @@ describe('ArticleComponent', () => {
     expect(art.votes).toEqual(4);
   });
 
+  it('should be able to delete an article', () => {
+    component.delete();
+    expect(component.article).toBeNull();
+  });
+
   it('should be able to initialize Articles', () => {
     const mockTitle = 'MockTitle';
     const art = new Article(mockTitle, mockLink, 6);
@@ -70,8 +79,9 @@ describe('ArticleComponent', () => {
 
   it('should be able to extract a domain from an url', () => {
     const art = new Article('', `${mockLink}path`);
-    const domain = art.domain();
 
-    expect(domain).toEqual(`mockURL`);
+    expect(art.domain).toEqual(`mockURL`);
   });
+
+
 });
