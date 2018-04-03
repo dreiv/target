@@ -1,7 +1,7 @@
 import { browser, by, element, WebElement } from 'protractor';
 
 export class AppPage {
-  header = (selector="") => `.menu ${selector}.header`;
+  header = (selector = '') => `.menu ${selector}.header`;
 
   navigateTo() {
     return browser.get('/');
