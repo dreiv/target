@@ -26,5 +26,5 @@
 <div class="ui grid posts">
   <app-article *ngFor="let article of sortedArticles()"
                [article]="article"
-               (onDeleted)=removeArticle(article)></app-article>
+               (deleted)=removeArticle(article)></app-article>
 </div>

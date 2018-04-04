@@ -32,7 +32,7 @@ export class AppComponent {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
   }
 
-  removeArticle(article){
+  removeArticle(article) {
     this.articles = this.articles.filter(art => art !== article);
   }
 }

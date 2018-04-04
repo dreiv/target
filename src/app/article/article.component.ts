@@ -10,7 +10,7 @@ import { NumberSymbol } from '@angular/common';
 export class ArticleComponent {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
-  @Output() onDeleted = new EventEmitter();
+  @Output() deleted = new EventEmitter();
 
   upvote(): boolean {
     this.article.upvote();
@@ -23,7 +23,7 @@ export class ArticleComponent {
   }
 
   delete(): boolean {
-    this.onDeleted.emit();
+    this.deleted.emit();
     return false;
   }
 }
