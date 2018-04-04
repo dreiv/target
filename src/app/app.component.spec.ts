@@ -99,6 +99,7 @@ describe('AppComponent', () => {
     // element should not be present in the articles array beforehand
     expect(mockArticlePresent()).toBeFalsy();
     app.addArticle(<HTMLInputElement>{ value: mockTitle }, <HTMLInputElement> {value: mockLink});
+    fixture.detectChanges();
 
     // element should be added to the articles array
     expect(mockArticlePresent()).toBeTruthy();
