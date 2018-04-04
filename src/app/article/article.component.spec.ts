@@ -309,7 +309,7 @@ describe('ArticleComponent', () => {
   });
 
   it('should be able to delete an article', () => {
-    component.onDeleted.subscribe(() => {
+    component.deleted.subscribe(() => {
       expect(true).toBeTruthy();
     });
 
