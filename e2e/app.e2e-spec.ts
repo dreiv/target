@@ -12,7 +12,7 @@ describe('target App', () => {
     page = new AppPage();
     page.navigateTo();
   });
-  
+
   it('should have an app entry point', () => {
     expect(page.getApp()).toBeTruthy();
   });
@@ -33,17 +33,17 @@ describe('target App', () => {
       prevArticleCount = page.getArticlesCount();
       page.getArticleFormTitle().sendKeys(mockTitle);
       page.getArticleFormLink().sendKeys(mockLink);
-      page.getArticleFormSubmitButton().click();  
+      page.getArticleFormSubmitButton().click();
     });
 
     it('should be able to add a new article', () => {
       expect(page.getArticlesCount()).toBeGreaterThan(prevArticleCount);
       const addedArticle = page.getArticles().last().element(by.css('.header'));
-  
+
       expect(addedArticle.getText()).toEqual(mockTitle);
       expect(addedArticle.getAttribute('href')).toContain(mockLink);
     });
-  
+
     it('should clear form imput fiels after an article was added', () => {
       expect(page.getArticleFormTitle().getText()).toEqual('');
       expect(page.getArticleFormLink().getText()).toEqual('');
