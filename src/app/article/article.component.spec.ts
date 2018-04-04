@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed, TestModuleMetadata } from '@angular/c
 import { ArticleComponent } from './article.component';
 import { setUpTestBed } from '../../test.common.spec';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { click } from '../utils';
+import { click } from '../test-utils';
 import { Article } from './article.model';
 import { By } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';

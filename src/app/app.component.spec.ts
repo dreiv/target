@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { Article } from './article/article.model';
 import { By } from '@angular/platform-browser';
-import { click } from './utils';
+import { click } from './test-utils';
 
 describe('AppComponent', () => {
   let app: AppComponent;

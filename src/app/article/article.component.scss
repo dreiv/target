@@ -1,0 +1,25 @@
+.votes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E6E6E6;
+    padding: 1em 0;
+    border-radius: 5px;
+}
+  
+.meta {
+    color: #9A9A9A
+}
+  
+.ui.grid>.row>.column.votes {
+    display: flex;
+}
+  
+ul.ui.list li:before {
+    content: '';
+}
+  
+.voters {
+    clear: both;
+    width: 100%;
+}
