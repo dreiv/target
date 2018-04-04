@@ -195,7 +195,7 @@ describe('ArticleComponent', () => {
   });
 
   it('should have and update it\'s article header label', () => {
-    const headers = ['hot', 'fire']
+    const headers = ['hot', 'fire'];
     component.article = new Article(headers[0], '');
     fixture.detectChanges();
 
@@ -219,7 +219,7 @@ describe('ArticleComponent', () => {
   });
 
   it('should have and update it\'s article meta label', () => {
-    const domains = ['hot', 'fire']
+    const domains = ['hot', 'fire'];
     component.article.domain = domains[0];
     fixture.detectChanges();
 
@@ -311,5 +311,5 @@ describe('ArticleComponent', () => {
     expect(classes.length).toEqual(2);
     expect(success).toBeTruthy();
   });
-  
+
 });
