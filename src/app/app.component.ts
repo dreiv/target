@@ -31,4 +31,8 @@ export class AppComponent {
   sortedArticles(): Article[] {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
   }
+
+  removeArticle(article){
+    this.articles = this.articles.filter(art => art !== article);
+  }
 }

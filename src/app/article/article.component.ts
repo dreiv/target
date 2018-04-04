@@ -1,5 +1,5 @@
 import { Article } from './article.model';
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 import { NumberSymbol } from '@angular/common';
 
 @Component({
@@ -10,6 +10,7 @@ import { NumberSymbol } from '@angular/common';
 export class ArticleComponent {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
+  @Output() onDeleted = new EventEmitter();
 
   upvote(): boolean {
     this.article.upvote();
@@ -22,7 +23,7 @@ export class ArticleComponent {
   }
 
   delete(): boolean {
-    this.article = null;
+    this.onDeleted.emit();
     return false;
   }
 }

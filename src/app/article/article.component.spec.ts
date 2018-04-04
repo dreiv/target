@@ -2,11 +2,12 @@ import { async, ComponentFixture, TestBed, TestModuleMetadata } from '@angular/c
 
 import { ArticleComponent } from './article.component';
 import { setUpTestBed } from '../../test.common.spec';
-import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement, Component } from '@angular/core';
 import { click } from '../test-utils';
 import { Article } from './article.model';
 import { By } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
+
 
 describe('ArticleComponent', () => {
   let component: ArticleComponent;
@@ -125,11 +126,6 @@ describe('ArticleComponent', () => {
     const art = new Article('', '', 5);
     art.downvote();
     expect(art.votes).toEqual(4);
-  });
-
-  it('should be able to delete an article', () => {
-    component.delete();
-    expect(component.article).toBeNull();
   });
 
   it('should be able to initialize Articles', () => {
@@ -310,6 +306,15 @@ describe('ArticleComponent', () => {
 
     expect(classes.length).toEqual(2);
     expect(success).toBeTruthy();
+  });
+
+  it('should be able to delete an article', () => {
+    component.onDeleted.subscribe(() => {
+      expect(true).toBeTruthy();
+    });
+
+    component.delete();
+    fixture.detectChanges();
   });
 
 });
