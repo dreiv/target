@@ -12,7 +12,7 @@ export class AppComponent {
   constructor() {
     this.articles = [
       new Article('Jenkins', 'http://jenkins.io/', 1),
-      new Article('Fullstack', 'http://fullstack.io', 2),
+      new Article('Fullstack', 'http://fullstack.io', 3),
       new Article('Angular Homepage', 'http://angular.io', 5)
     ];
   }
