@@ -24,8 +24,8 @@ pipeline {
         stage('deploy') {
             steps {
                 sh 'docker build --target=deploy -t deploy .'
-                sh 'docker rm -f $(docker ps -a -q)'
-                sh 'docker run -d -p 80:80 deploy'
+                sh 'docker rm -f deploy || true'
+                sh 'docker run --name deploy -d -p 80:80 deploy'
                 sh 'docker system prune -f'
             }    
         }
