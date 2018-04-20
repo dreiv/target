@@ -3,7 +3,7 @@ pipeline {
     parameters {
         string(name: 'registry', defaultValue: 'deploy.azurecr.io', description: 'Name of the used Docker Registry.')
         string(name: 'app', defaultValue: 'target-app', description: 'Name of the Application Docker Container.')
-        string(name: 'group', defaultValue: '${group}', description: 'Name of the used Azure Resource Group.')
+        string(name: 'group', defaultValue: 'drei-target', description: 'Name of the used Azure Resource Group.')
     }
     stages {
         stage ('lint') {
