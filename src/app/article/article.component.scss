@@ -23,3 +23,8 @@ ul.ui.list li:before {
     clear: both;
     width: 100%;
 }
+
+ul.ui.list > .item {
+    margin-left: 0;
+    margin-right: 1em;
+}
