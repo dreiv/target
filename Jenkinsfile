@@ -23,11 +23,12 @@ pipeline {
         // }
         stage('build && deploy') {
             environment {
-                ACR = credentials('acr')
+                APP_ID = credentials('APP_ID')
+                APP_PWD = credentials('PWD')
                 TENANT = credentials('TENANT')
             }
             steps {
-                sh "az login --service-principal -u ${ACR_USR} -p ${ACR_PSW} --tenant ${TENANT}"
+                sh "az login --service-principal -u ${APP_ID} -p ${APP_PWD} --tenant ${TENANT}"
             }    
         }
     }
