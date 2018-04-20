@@ -23,7 +23,7 @@ pipeline {
         // }
         stage('build && deploy') {
             environment {
-                DEV_APP_ID = credentials('acr')
+                ACR = credentials('acr')
             }
             steps {
                 sh 'printenv'
