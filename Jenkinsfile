@@ -24,6 +24,7 @@ pipeline {
         stage('build && deploy') {
             environment {
                 ACR = credentials('acr')
+                TENANT = credentials('TENANT')
             }
             steps {
                 sh 'printenv'
