@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '9'))
+        timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
+        timestamps() 
+    }
     parameters {
         string(name: 'registry', defaultValue: 'deploy.azurecr.io', description: 'The used Docker Registry.')
         string(name: 'app', defaultValue: 'target-app', description: 'The Application Docker Container.')
