@@ -15,20 +15,20 @@ pipeline {
         stage ('lint') {
             steps {
                 sh 'docker build --target=dependencies -t dependencies .'
-                sh 'docker run --rm dependencies \
+                sh 'docker run dependencies \
                         ng lint'
             }
         }
         stage ('unit tests') {
             steps {
                 sh 'docker build --target=test -t test .'
-                sh 'docker run --rm test \
+                sh 'docker run test \
                         npm run test:CI'
             }
         }
         stage('e2e tests') {
             steps {
-                sh 'docker run --rm test \
+                sh 'docker run test \
                         npm run e2e:CI'
             }
         }
@@ -39,7 +39,7 @@ pipeline {
                 REG = credentials('REG')
             }
             steps {
-                sh 'docker build --target=deploy -t ${registry}/${app} .'
+                sh 'docker build -q --target=deploy -t ${registry}/${app} .'
                 sh 'docker login ${registry} -u ${REG_USR} -p ${REG_PSW} \
                     && docker push ${registry}/${app}'
                 sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PSW} --tenant ${TENANT} \
