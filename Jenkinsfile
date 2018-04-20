@@ -23,16 +23,14 @@ pipeline {
         // }
         stage('build && deploy') {
             environment {
-                APP_ID = credentials('APP_ID')
-                APP_PWD = credentials('PWD')
+                AZ = credentials('AZ')
                 TENANT = credentials('TENANT')
-                REG_USR = credentials('REG_USR')
-                REG_PWD = credentials('REG_PWD')
+                REG = credentials('REG')
             }
             steps {
                 sh 'docker login deploy.azurecr.io -u ${REG_USR} -p ${REG_PWD}'
                 sh 'docker push deploy.azurecr.io/target-app'
-                sh 'az login --service-principal -u ${APP_ID} -p ${APP_PWD} --tenant ${TENANT}'
+                sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PWD} --tenant ${TENANT}'
                 sh 'az container delete --resource-group drei-target --name target-app --yes || true'
                 sh 'az container create --resource-group drei-target --name target-app --image deploy.azurecr.io/target-app \
                     --memory .1 --registry-username ${REG_USR} --registry-password ${REG_PWD} --dns-name-label deploy'
