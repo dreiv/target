@@ -37,7 +37,7 @@ pipeline {
                 sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PWD} --tenant ${TENANT} \
                     && az container delete --name ${app} --yes || true \
                     && az container create --name ${app} --image ${registry}/${app} \
-                    --memory .1 --dns-name-label deploy'
+                    --memory .1 --registry-username ${REG_USR} --registry-password ${REG_PSW} --dns-name-label deploy'
             }    
         }
     }
