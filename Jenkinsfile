@@ -28,12 +28,13 @@ pipeline {
                 REG = credentials('REG')
             }
             steps {
-                sh 'docker login deploy.azurecr.io -u ${REG_USR} -p ${REG_PWD}'
-                sh 'docker push deploy.azurecr.io/target-app'
-                sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PWD} --tenant ${TENANT}'
-                sh 'az container delete --resource-group drei-target --name target-app --yes || true'
-                sh 'az container create --resource-group drei-target --name target-app --image deploy.azurecr.io/target-app \
-                    --memory .1 --registry-username ${REG_USR} --registry-password ${REG_PWD} --dns-name-label deploy'
+                sh 'printenv'
+                // sh 'docker login deploy.azurecr.io -u ${REG_USR} -p ${REG_PWD}'
+                // sh 'docker push deploy.azurecr.io/target-app'
+                // sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PWD} --tenant ${TENANT}'
+                // sh 'az container delete --resource-group drei-target --name target-app --yes || true'
+                // sh 'az container create --resource-group drei-target --name target-app --image deploy.azurecr.io/target-app \
+                //     --memory .1 --registry-username ${REG_USR} --registry-password ${REG_PWD} --dns-name-label deploy'
             }    
         }
     }
