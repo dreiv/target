@@ -30,6 +30,7 @@ pipeline {
                 REG_PWD = credentials('REG_PWD')
             }
             steps {
+                sh 'docker login deploy.azurecr.io -u ${REG_USR} --registry-password ${REG_PWD}'
                 sh 'docker push deploy.azurecr.io/target-app'
                 sh 'az login --service-principal -u ${APP_ID} -p ${APP_PWD} --tenant ${TENANT}'
                 sh 'az container delete --resource-group drei-target --name target-app --yes || true'
