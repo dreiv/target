@@ -183,7 +183,7 @@ describe('AppComponent', () => {
     });
 
     it('should have a submit button label text', () => {
-      expect(App.formSubmitButtonText).toContain('Submit article');
+      expect(App.formSubmitButtonText).toContain('Submit articldadadade');
     });
 
     it('should have the right styling applied to the button', () => {
