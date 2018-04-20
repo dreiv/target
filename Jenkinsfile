@@ -36,7 +36,8 @@ pipeline {
                     && docker push ${registry}/${app}'
                 sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PSW} --tenant ${TENANT} \
                     && az container delete --resource-group drei-target --name ${app} --yes || true \
-                    && az container create --resource-group drei-target --name ${app} --image ${registry}/${app} --memory .1 --dns-name-label deploy'
+                    && az container create --resource-group drei-target --name ${app} --image ${registry}/${app} \
+                    --registry-username ${REG_USR} --registry-password ${REG_PWD} --memory .1 --dns-name-label deploy'
             }    
         }
     }
