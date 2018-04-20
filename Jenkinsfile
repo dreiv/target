@@ -27,7 +27,7 @@ pipeline {
                 TENANT = credentials('TENANT')
             }
             steps {
-                sh 'printenv'
+                sh "az login --service-principal -u ${ACR_USR} -p ${ACR_PSW} --tenant ${TENANT}"
             }    
         }
     }
