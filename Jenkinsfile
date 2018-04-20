@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         string(name: 'registry', defaultValue: 'deploy.azurecr.io', description: 'Name of the used Docker Registry.')
-        string(name: 'app', defaultValue: '${app}', description: 'Name of the Application Docker Container.')
+        string(name: 'app', defaultValue: 'target-app', description: 'Name of the Application Docker Container.')
     }
     stages {
         // stage ('lint') {
@@ -36,8 +36,7 @@ pipeline {
                     && docker push ${registry}/${app}'
                 sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PWD} --tenant ${TENANT} \
                     && az container delete --name ${app} --yes || true \
-                    && az container create --name ${app} --image ${registry}/${app} \
-                    --memory .1 --registry-username ${REG_USR} --registry-password ${REG_PSW} --dns-name-label deploy'
+                    && az container create --name ${app} --image ${registry}/${app} --memory .1 --dns-name-label deploy'
             }    
         }
     }
