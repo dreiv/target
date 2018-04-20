@@ -33,10 +33,10 @@ pipeline {
             }
             steps {
                 sh 'docker login ${registry} -u ${REG_USR} -p ${REG_PSW} \
-                    && docker push ${registry}/${app}'
+                    && docker push ${registry}//${app}'
                 sh 'az login --service-principal -u ${AZ_USR} -p ${AZ_PWD} --tenant ${TENANT} \
                     && az container delete --name ${app} --yes || true \
-                    && az container create --name ${app} --image ${registry}/${app} --memory .1 --dns-name-label deploy'
+                    && az container create --name ${app} --image ${registry}//${app} --memory .1 --dns-name-label deploy'
             }    
         }
     }
