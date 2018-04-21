@@ -18,7 +18,7 @@ COPY . $HOME
 
 #
 # -- Test --
-FROM base AS test
+FROM base AS chrome
 ENV CHROME_BIN /usr/bin/chromium-browser
 # Install Chromium
 RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \

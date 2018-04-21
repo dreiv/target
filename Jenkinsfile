@@ -21,14 +21,14 @@ pipeline {
         }
         stage ('unit tests') {
             steps {
-                sh 'docker build --target=test -t test .'
-                sh 'docker run test \
+                sh 'docker build --target=chrome -t chrome .'
+                sh 'docker run chrome \
                         npm run test:CI'
             }
         }
         stage('e2e tests') {
             steps {
-                sh 'docker run test \
+                sh 'docker run chrome \
                         npm run e2e:CI'
             }
         }
