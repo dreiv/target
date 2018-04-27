@@ -20,7 +20,6 @@ export class AppComponent {
   addArticle(titleEl: HTMLInputElement, linkEl: HTMLInputElement): boolean {
     const title = titleEl.value;
     const link = linkEl.value;
-    console.log(`Adding article: ${title} and link: ${link}`);
     this.articles.push(new Article(title, link));
 
     titleEl.value = '';
